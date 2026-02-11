@@ -62,20 +62,32 @@ html{scroll-behavior:smooth}
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
     <!-- Logo Left -->
-    <h1 class="noyon-logo text-2xl font-extrabold flex items-center gap-2 cursor-pointer">
-      🇧🇩 <span>Nazmul Haque Noyon </span>
+    <h1 class="noyon-logo text-gray-400 text-2xl font-extrabold flex items-center gap-2 cursor-pointer">
+      <span> NAZMUL HAQUE NOYON</span>
     </h1>
 
-    <!-- Center Menu -->
-    <div class="hidden md:flex gap-10">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#resume" class="nav-link">Resume</a>
-    </div>
+   <!-- Center Menu -->
+<!-- Center Menu -->
+<div class="hidden md:flex gap-10">
+  <a href="#about" class="nav-link">About</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#projects" class="nav-link">Projects</a>
+  <a href="#education" class="nav-link">Education</a> <!-- new -->
+  <a href="#travel-vlog" class="nav-link">Travel Blog</a>
+  <a href="#extra-curricular" class="nav-link">Extracurricular</a>
+</div>
+
+
 
     <!-- HIRING Right -->
-    <span class="hidden md:inline hiring-bloom cursor-pointer">HIRING</span>
+
+    <!-- HIRING button with mailto -->
+<span class="hidden md:inline hiring-bloom cursor-pointer"
+      onclick="window.location.href='mailto:noyon49988@gmail.com?subject=Hiring%20Inquiry&body=Hi%20Nazmul%2C%0A%0AI%20am%20interested%20in%20hiring%20you.%20Please%20let%20me%20know%20the%20details.%0A%0AThanks.'">
+  HIRING ME
+</span>
+
+     
 
     <!-- Mobile Menu Button -->
     <button id="menuBtn" class="md:hidden text-2xl">
@@ -83,16 +95,25 @@ html{scroll-behavior:smooth}
     </button>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-black/80 backdrop-blur px-6 pb-4 flex flex-col items-center gap-3">
-    <a href="#about" class="block py-2 nav-link">About</a>
-    <a href="#skills" class="block py-2 nav-link">Skills</a>
-    <a href="#projects" class="block py-2 nav-link">Projects</a>
-    <a href="#resume" class="block py-2 nav-link">Resume</a>
-    <span class="hiring-bloom mt-2 inline-block">HIRING</span>
-  </div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden md:hidden bg-black/80 backdrop-blur px-6 pb-4 flex flex-col items-center gap-3">
+  <a href="#about" class="block py-2 nav-link">About</a>
+  <a href="#skills" class="block py-2 nav-link">Skills</a>
+  <a href="#projects" class="block py-2 nav-link">Education</a>
+  <a href="#projects" class="block py-2 nav-link">Projects</a>
+  <a href="#travel-vlog" class="nav-link">Travel Blog</a>
+  <a href="#extra-curricular" class="nav-link">Extracurricular</a>
+  
+  <!-- Hire Me Button with mailto -->
+  <span class="hiring-bloom mt-2 inline-block cursor-pointer"
+        onclick="window.location.href='mailto:noyon49988@gmail.com?subject=Hiring%20Inquiry&body=Hi%20Nazmul%2C%0A%0AI%20am%20interested%20in%20hiring%20you.%20Please%20let%20me%20know%20the%20details.%0A%0AThanks.'">
+    Hire Me
+  </span>
+</div>
+
 </nav>
 <style>
+  
 /* Menu Links */
 .nav-link{
   position: relative;
@@ -147,13 +168,13 @@ html{scroll-behavior:smooth}
   animation: bloom 2s infinite ease-in-out;
 }
 @keyframes bloom{
-  0%,100%{
+  1000%,100%{
     box-shadow:
       0 0 10px rgba(0,229,255,.6),
       0 0 25px rgba(0,229,255,.5),
       0 0 50px rgba(0,229,255,.4);
   }
-  50%{
+  80%{
     box-shadow:
       0 0 20px rgba(0,229,255,.8),
       0 0 45px rgba(0,229,255,.7),
@@ -180,7 +201,7 @@ btn.addEventListener("click", ()=>{
   <!-- Left Text -->
   <div class="md:w-1/2 text-center md:text-left z-10 space-y-6">
     <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-wide">
-      Hi, I'm <span class="text-white font-bold">Nazmul Haque Noyon</span>
+      Hi, I'm <span class="text-gray-400 ">Nazmul Haque Noyon</span>
     </h1>
 
     <p class="text-2xl md:text-3xl font-semibold text-gray-200">
@@ -194,7 +215,7 @@ btn.addEventListener("click", ()=>{
 
     <!-- Download CV Button (left on desktop, below image on mobile) -->
     <div class="mt-6">
-      <a href="Nazmul_Haque_Noyon_CV.pdf" download
+      <a href="web Nazmul cv (1).pdf" download
          class="px-10 py-4 rounded-lg bg-gray-800 text-white font-semibold shadow-md hover:shadow-cyan-500/50 hover:scale-105 transition-all md:inline-block block">
          Download My CV
       </a>
@@ -203,8 +224,8 @@ btn.addEventListener("click", ()=>{
 
   <!-- Right Image -->
   <div class="md:w-1/2 relative mt-10 md:mt-0 flex justify-center md:justify-end">
-    <div class="w-full md:w-96 h-64 md:h-auto border-2 border-gray-600 shadow-md overflow-hidden transform transition-all hover:scale-105 hover:shadow-cyan-500/40">
-      <img src="WhatsApp Image 2026-02-10 at 02.34.53.jpeg"
+    <div class="w-full md:w-50 h-49 md:h-auto border-8 border-gray-400 shadow-md overflow-hidden transform transition-all hover:scale-105 hover:shadow-cyan-500/40">
+      <img src="no.jpeg"
            class="w-full h-full object-contain"/>
     </div>
   </div>
@@ -282,7 +303,7 @@ window.addEventListener('resize', () => {
 </script>
 
 <!-- ABOUT SECTION -->
-<section id="about" class="relative flex justify-center px-6 md:px-16 py-24 bg-black">
+<section id="about" class="relative flex justify-center px-6 md:px-16 py-24 bg-gray-800">
 
   <!-- Soft Star Background -->
   <div class="absolute inset-0 pointer-events-none">
@@ -315,13 +336,7 @@ window.addEventListener('resize', () => {
       <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
         I enjoy working with <span class="text-gradient-purple font-semibold">HTML, CSS, JavaScript, React, and Python</span>, and I continuously explore new technologies to enhance my skills as a frontend developer.
       </p>
-
-      <!-- Projects Button with glowing bloom effect -->
-      <a href="/projects.html"
-         class="inline-block mt-6 px-10 py-4 rounded-lg bg-gray-800 text-white font-semibold shadow-md hover:shadow-[0_0_20px_rgba(0,198,255,0.6)] hover:scale-105 hover:animate-bloom transition-all">
-         My Projects
-      </a>
-    </div>
+      
 
   </div>
 </section>
@@ -670,6 +685,8 @@ skillCards.forEach(card => observer.observe(card));
 <body>
 
 <!-- WORK EXPERIENCE -->
+ 
+
 <section class="apple-work-section">
   <div class="apple-container">
 
@@ -681,7 +698,7 @@ skillCards.forEach(card => observer.observe(card));
 
       <!-- IMAGE -->
       <div class="apple-image">
-        <!-- এখানে তোমার image path বসাও -->
+        
         <img src="WhatsApp Image 2026-02-11 at 05.20.56.jpeg" alt="Nazmul Haque Noyon">
       </div>
 
@@ -735,7 +752,7 @@ skillCards.forEach(card => observer.observe(card));
         <div>
           <h3 class="text-2xl font-bold text-sky-400">Programming Hero Web Development Bootcamp</h3>
           <p class="text-gray-300 font-medium">Programming Hero | Online</p>
-          <p class="text-gray-400 italic mb-2">2024</p>
+          <p class="text-gray-400 italic mb-2">2025-2026</p>
           <p class="text-gray-400 text-sm">Project-based web development bootcamp covering modern technologies like JavaScript, React, backend frameworks, and portfolio projects.</p>
         </div>
       </div>
@@ -777,8 +794,8 @@ skillCards.forEach(card => observer.observe(card));
 
 
 <!-- PROJECTS -->
-<section id="projects" class="py-24 bg-black/20">
-  <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">Projects</h2>
+<section id="projects" class="py-24 bg-gray-600">
+  <h2 class="text-4xl font-bold text-center mb-12 text-black-400">Projects</h2>
   
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 px-6">
     <!-- Project 1 -->
@@ -787,7 +804,7 @@ skillCards.forEach(card => observer.observe(card));
       <div class="p-6">
         <h3 class="text-2xl font-semibold text-blue-300 mb-3">Chirkut Feriwala</h3>
         <p class="text-gray-300 mb-4">
-          A fun and interactive note-taking web app for organizing daily tasks and spontaneous ideas. Fully responsive and user-friendly.
+          Notebook E-commers website. Fully responsive and user-friendly.
         </p>
         <a href="https://noyon710.github.io/Chirkut_Feriwala/" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
           View Project
@@ -797,7 +814,7 @@ skillCards.forEach(card => observer.observe(card));
 
     <!-- Project 2 -->
     <div class="bg-gray-900/60 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="https://noyon710.github.io/TechWave-Website/assets/thumbnail.png" alt="TechWave Website Project" class="w-full h-48 object-cover">
+      <img src="Screenshot 2026-02-11 at 7.36.01 AM.png" alt="TechWave Website Project" class="w-full h-48 object-cover">
       <div class="p-6">
         <h3 class="text-2xl font-semibold text-blue-300 mb-3">TechWave Website</h3>
         <p class="text-gray-300 mb-4">
@@ -810,30 +827,282 @@ skillCards.forEach(card => observer.observe(card));
     </div>
   </div>
 </section>
+ <!-- EXTRACURRICULAR SECTION -->
+<section id="extra-curricular" class="py-24 bg-gray-800 text-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Extracurricular Activities</h2>
 
+    <div class="space-y-10">
 
+      <!-- Activity 1: Blood Donor -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-red-400/50 border-2 border-transparent hover:border-red-400 flex items-center gap-6">
+        <!-- Demo Logo Image -->
+        <img src="red pp Image 2026-02-11 at 08.47.14.jpeg" 
+             alt="Blood Donor Logo" class="w-24 h-24 rounded-full border-2 border-red-400 object-cover">
 
+        <div>
+          <h3 class="text-2xl font-bold text-red-400">Blood Donor</h3>
+          <p class="text-gray-300 font-medium">Red Crescent Blood Center | Mohammadpur, Dhaka</p>
+          <p class="text-gray-300 font-medium">Red Crescent Holy Family Medical College Hospital, Dhaka</p>
+          <p class="text-gray-300 font-medium">OAB Foundation | Amin Garden, Amin Bhaban, 272/5, West Agargaon, Dhaka-1207</p>
+          <p class="text-gray-400 italic mb-2">26/02/2024 – Current</p>
+        </div>
+      </div>
 
+      <!-- Activity 2: AIUB Lawn Tennis Team -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-green-400/50 border-2 border-transparent hover:border-green-400 flex items-center gap-6">
+        <!-- Demo Logo Image -->
+        <img src="sports App Image 2026-02-11 at 08.47.13.jpeg" 
+             alt="AIUB Lawn Tennis Logo" class="w-24 h-24 rounded-full border-2 border-green-400 object-cover">
 
+        <div>
+          <h3 class="text-2xl font-bold text-green-400">Member, AIUB Lawn Tennis Team</h3>
+          <p class="text-gray-300 font-medium">Actively participate in inter-university tournaments, practice sessions, and team events.</p>
+          <p class="text-gray-400 italic mb-2">01/11/2024 – Current</p>
+        </div>
+      </div>
 
-<!-- PROJECTS -->
-<section id="projects" class="py-24 bg-black/20">
-  <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">Projects</h2>
-  <p class="text-center text-gray-300">Coming soon… 🚀</p>
+      <!-- Activity 3: AIUB Astronomy & Space Science Club -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-purple-400/50 border-2 border-transparent hover:border-purple-400 flex items-center gap-6">
+        <!-- Demo Logo Image -->
+        <img src="astro.jpeg" 
+             alt="AIUB Astronomy Club Logo" class="w-24 h-24 rounded-full border-2 border-purple-400 object-cover">
+
+        <div>
+          <h3 class="text-2xl font-bold text-purple-400">Public Relation Team Member, AIUB Astronomy & Space Science Club</h3>
+          <p class="text-gray-300 font-medium">Participate in astronomy-related events, workshops, and observational activities.</p>
+          <p class="text-gray-400 italic mb-2">Date: Ongoing</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
+<!-- TRAVEL BLOG SECTION (MAIN PAGE) -->
+<section id="travel-vlog" class="py-24 bg-gray-700 text-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Travel Blog</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Travel 1: Kashmir (Visible) -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="kashmir.jpeg" alt="Kashmir" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Kashmir</h3>
+            <p class="text-gray-300 text-sm">
+               2024. Snowy valleys and mountains.  
+              Local food and culture explored.  
+              Scenic lakes and gardens visited.  
+              Memorable trekking and photography.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 2: Jama Masjid (Visible) -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="masjig.jpeg" alt="Jama Masjid" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Jama Masjid</h3>
+            <p class="text-gray-300 text-sm">
+              2024. Historical mosque visit.  
+              Observed Islamic architecture and art.  
+              Attended prayer session briefly.  
+              Enjoyed surrounding market atmosphere.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden Additional Travels -->
+    <div id="moreTravels" class="grid md:grid-cols-2 gap-8 mt-8 hidden">
+
+      <!-- Travel 3: New Delhi -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="d2.jpeg" alt="New Delhi" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">New Delhi</h3>
+            <p class="text-gray-300 text-sm">
+              2024. Explored historical monuments.  
+              Tasted street food and local cuisine.  
+              Visited India Gate and Red Fort.  
+              Enjoyed local markets and culture.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 4: Sent Martin -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="sent.jpeg" alt="Sent Martin" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Sent Martin</h3>
+            <p class="text-gray-300 text-sm">
+              Beach vacation 2023. Clear blue waters.  
+              White sand relaxation and sunbathing.  
+              Explored local seafood restaurants.  
+              Enjoyed water sports and photography.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 5: Rangamati -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="rangamati.jpeg" alt="Rangamati" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Rangamati</h3>
+            <p class="text-gray-300 text-sm">
+               2026. Hill tracts visit.  
+              Boat rides and local markets explored.  
+              Scenic viewpoints captured.  
+              Cultural villages visited.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 6: Cox's Bazar -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="cox.jpeg" alt="Cox's Bazar" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Cox's Bazar</h3>
+            <p class="text-gray-300 text-sm">
+              Summer 2023. Long sandy beach visit.  
+              Sunset photography enjoyed.  
+              Local seafood and culture explored.  
+              Water sports tried.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 7: Tanguar Haor -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="tangur.jpeg" alt="Tanguar Haor" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Tanguar Haor</h3>
+            <p class="text-gray-300 text-sm">
+              Winter 2025. Wetland exploration.  
+              Boat rides and bird watching.  
+              Local floating village visited.  
+              Photography of sunrise.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel 8: Marayang Tong -->
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
+        <img src="maray.jpeg" alt="Marayang Tong" class="w-full h-auto object-contain">
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Marayang Tong</h3>
+            <p class="text-gray-300 text-sm">
+              Spring 2021. Local village visit.  
+              Hills and rivers explored.  
+              Cultural events attended.  
+              Photography captured.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Show More Button -->
+    <div class="text-center mt-8">
+      <button id="showMoreBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">
+        Show More
+      </button>
+    </div>
+
+  </div>
 </section>
 
-<!-- RESUME -->
-<section id="resume" class="py-24 text-center">
-  <h2 class="text-4xl font-bold mb-6 text-blue-400">Resume</h2>
-  <a href="assets/resume/Nazmul_Haque_Noyon_Resume.pdf" download
-     class="px-10 py-4 rounded-full bg-blue-600 hover:bg-blue-700 transition">
-     Download Resume
-  </a>
+<script>
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const moreTravels = document.getElementById('moreTravels');
+
+  showMoreBtn.addEventListener('click', () => {
+    moreTravels.classList.remove('hidden');
+    showMoreBtn.style.display = 'none'; // hide button after click
+  });
+</script>
+
+
+
+
+
+
+
+
+<!-- CONTACT / HIRE ME SECTION -->
+<section id="contact" class="py-24 bg-gray-900 text-white">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Section Heading -->
+    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Hire Me</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- Contact Form -->
+      <form action="mailto:noyon49988@gmail.com" method="POST" class="bg-gray-800 p-8 rounded-2xl shadow-lg space-y-6">
+        <input type="text" name="name" placeholder="Your Name" required
+               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <input type="email" name="email" placeholder="Your Email" required
+               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <input type="text" name="subject" placeholder="Subject" required
+               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <textarea name="message" rows="5" placeholder="Your Message" required
+                  class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+        <button type="submit" 
+                class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold shadow-lg hover:shadow-xl transition-colors duration-300">
+          Send Message
+        </button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="space-y-6 flex flex-col justify-center text-center md:text-left">
+        <p class="text-lg">📧 <a href="mailto:noyon49988@gmail.com" class="hover:text-blue-400 transition">noyon49988@gmail.com</a></p>
+        <p class="text-lg"> WhatsApp: <a href="https://wa.me/01646777803" target="_blank" class="hover:text-green-400 transition">01646777803</a></p>
+
+        <!-- Social Links -->
+        <div class="flex justify-center md:justify-start gap-6 mt-4">
+          <a href="https://www.linkedin.com/in/nazmul-haque-noyon-a44285279/" target="_blank" class="text-blue-600 hover:text-blue-400 transition text-2xl">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Noyon710" target="_blank" class="text-gray-400 hover:text-white transition text-2xl">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.facebook.com/share/18Cs4SFtRU/" target="_blank" class="text-blue-500 hover:text-blue-400 transition text-2xl">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/nazmul_noyon71?igsh=aXc0dDQ3NTlsZmw1" target="_blank" class="text-pink-500 hover:text-pink-400 transition text-2xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<footer class="py-6 text-center text-gray-300">
-© 2026 Nazmul Haque Noyon 🇧🇩
+<!-- FOOTER -->
+<footer class="py-6 text-center text-gray-400 bg-gray-900 border-t border-gray-700">
+  © 2026 Nazmul Haque Noyon 🇧🇩. All Rights Reserved.
 </footer>
 
-</body>
-</html>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
