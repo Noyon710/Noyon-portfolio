@@ -1,11 +1,839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noyon portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazmul Haque Noyon | Frontend Developer</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+html{scroll-behavior:smooth}
+
+/* Skill Card */
+.skill-card{
+  position: relative;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .4s ease, box-shadow .4s ease;
+  overflow: hidden;
+}
+.skill-card i{
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+.skill-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:2px;
+  background:linear-gradient(120deg,#00c6ff,#0072ff,#00c6ff);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation:borderMove 3s linear infinite;
+}
+.skill-card:hover{
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 25px 50px rgba(0,0,0,.4);
+}
+@keyframes borderMove{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+</style>
 </head>
+
+<body class="text-white bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364]">
+
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- Logo Left -->
+    <h1 class="noyon-logo text-2xl font-extrabold flex items-center gap-2 cursor-pointer">
+      🇧🇩 <span>Nazmul Haque Noyon </span>
+    </h1>
+
+    <!-- Center Menu -->
+    <div class="hidden md:flex gap-10">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#resume" class="nav-link">Resume</a>
+    </div>
+
+    <!-- HIRING Right -->
+    <span class="hidden md:inline hiring-bloom cursor-pointer">HIRING</span>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden text-2xl">
+      <i class="fa-solid fa-bars text-white"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-black/80 backdrop-blur px-6 pb-4 flex flex-col items-center gap-3">
+    <a href="#about" class="block py-2 nav-link">About</a>
+    <a href="#skills" class="block py-2 nav-link">Skills</a>
+    <a href="#projects" class="block py-2 nav-link">Projects</a>
+    <a href="#resume" class="block py-2 nav-link">Resume</a>
+    <span class="hiring-bloom mt-2 inline-block">HIRING</span>
+  </div>
+</nav>
+<style>
+/* Menu Links */
+.nav-link{
+  position: relative;
+  color: white;
+  transition: color .3s ease;
+  font-weight: 500;
+}
+.nav-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#60a5fa;
+  transition:width .3s ease;
+}
+.nav-link:hover{
+  color:#60a5fa;
+}
+.nav-link:hover::after{
+  width:100%;
+}
+
+/* Logo Gradient + Hover */
+.noyon-logo span {
+  background: linear-gradient(90deg, #00c6ff, #0072ff, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.noyon-logo span:hover {
+  transform: scale(1.1);
+  text-shadow: 0 4px 20px rgba(0,198,255,0.8);
+}
+
+/* HIRING Bloom */
+.hiring-bloom{
+  position: relative;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #00e5ff;
+  border: 1px solid rgba(0,229,255,.6);
+  box-shadow:
+    0 0 10px rgba(0,229,255,.6),
+    0 0 25px rgba(0,229,255,.5),
+    0 0 50px rgba(0,229,255,.4);
+  animation: bloom 2s infinite ease-in-out;
+}
+@keyframes bloom{
+  0%,100%{
+    box-shadow:
+      0 0 10px rgba(0,229,255,.6),
+      0 0 25px rgba(0,229,255,.5),
+      0 0 50px rgba(0,229,255,.4);
+  }
+  50%{
+    box-shadow:
+      0 0 20px rgba(0,229,255,.8),
+      0 0 45px rgba(0,229,255,.7),
+      0 0 80px rgba(0,229,255,.6);
+  }
+}
+</style>
+<script>
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
+
+btn.addEventListener("click", ()=>{
+  menu.classList.toggle("hidden");
+});
+</script>
+<!-- HERO SECTION -->
+<section class="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-16 pt-24 overflow-hidden bg-black">
+
+  <!-- Soft Star Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <canvas id="heroStars" class="w-full h-full"></canvas>
+  </div>
+
+  <!-- Left Text -->
+  <div class="md:w-1/2 text-center md:text-left z-10 space-y-6">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-wide">
+      Hi, I'm <span class="text-white font-bold">Nazmul Haque Noyon</span>
+    </h1>
+
+    <p class="text-2xl md:text-3xl font-semibold text-gray-200">
+      Creative Frontend <span class="text-gradient-cyan">Web Architect</span>
+    </p>
+
+    <p class="text-gray-300 max-w-lg mx-auto md:mx-0">
+      I craft <strong>modern, interactive & responsive websites</strong> using 
+      <span class="text-gradient-purple font-bold">HTML, CSS, JavaScript, React, Python</span> and more.
+    </p>
+
+    <!-- Download CV Button (left on desktop, below image on mobile) -->
+    <div class="mt-6">
+      <a href="Nazmul_Haque_Noyon_CV.pdf" download
+         class="px-10 py-4 rounded-lg bg-gray-800 text-white font-semibold shadow-md hover:shadow-cyan-500/50 hover:scale-105 transition-all md:inline-block block">
+         Download My CV
+      </a>
+    </div>
+  </div>
+
+  <!-- Right Image -->
+  <div class="md:w-1/2 relative mt-10 md:mt-0 flex justify-center md:justify-end">
+    <div class="w-full md:w-96 h-64 md:h-auto border-2 border-gray-600 shadow-md overflow-hidden transform transition-all hover:scale-105 hover:shadow-cyan-500/40">
+      <img src="WhatsApp Image 2026-02-10 at 02.34.53.jpeg"
+           class="w-full h-full object-contain"/>
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* Gradient Texts */
+.text-gradient-cyan {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-purple {
+  background: linear-gradient(90deg, #a855f7, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CV Button Glow on Desktop */
+@media (min-width: 768px) {
+  a[href$=".pdf"] {
+    box-shadow: 0 0 10px rgba(0,198,255,0.5);
+  }
+  a[href$=".pdf"]:hover {
+    box-shadow: 0 0 20px rgba(0,198,255,0.7);
+  }
+}
+
+/* Optional subtle smooth hover for right image */
+</style>
+
+<script>
+// Minimal Soft Star Animation
+const canvas = document.getElementById("heroStars");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const stars = [];
+const starCount = 80;
+
+for (let i = 0; i < starCount; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.5,
+    dy: Math.random() * 0.4 + 0.1,
+    opacity: Math.random() * 0.5 + 0.2
+  });
+}
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+    ctx.fill();
+    star.y += star.dy;
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
+  });
+  requestAnimationFrame(animateStars);
+}
+
+animateStars();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="relative flex justify-center px-6 md:px-16 py-24 bg-black">
+
+  <!-- Soft Star Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <canvas id="aboutStars" class="w-full h-full"></canvas>
+  </div>
+
+  <!-- About Card -->
+  <div class="relative z-10 max-w-4xl w-full p-10 md:p-16 bg-black border-2 border-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(0,198,255,0.3)] transition-all">
+
+    <!-- Text Content -->
+    <div class="text-center space-y-6">
+
+      <!-- Small Coding Icon Above Heading -->
+      <div class="flex justify-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/270/270798.png" 
+             alt="coding icon" 
+             class="w-16 h-16 md:w-20 md:h-20 mb-4 animate-bounce"/>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-wide">
+        About Me
+      </h2>
+
+      <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+        I am a passionate <strong>frontend developer</strong> specializing in building 
+        <span class="text-gradient-cyan font-semibold">modern, interactive, and responsive web applications</span>.  
+        My goal is to create websites that are visually appealing, intuitive, and optimized for performance.
+      </p>
+
+      <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
+        I enjoy working with <span class="text-gradient-purple font-semibold">HTML, CSS, JavaScript, React, and Python</span>, and I continuously explore new technologies to enhance my skills as a frontend developer.
+      </p>
+
+      <!-- Projects Button with glowing bloom effect -->
+      <a href="/projects.html"
+         class="inline-block mt-6 px-10 py-4 rounded-lg bg-gray-800 text-white font-semibold shadow-md hover:shadow-[0_0_20px_rgba(0,198,255,0.6)] hover:scale-105 hover:animate-bloom transition-all">
+         My Projects
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Gradient Texts */
+.text-gradient-cyan {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-purple {
+  background: linear-gradient(90deg, #a855f7, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing bloom animation for button */
+@keyframes bloom {
+  0% { box-shadow: 0 0 5px rgba(0,198,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(0,198,255,0.6); }
+  100% { box-shadow: 0 0 5px rgba(0,198,255,0.3); }
+}
+.animate-bloom {
+  animation: bloom 2s infinite alternate;
+}
+
+/* Optional: smooth hover for card border glow */
+</style>
+
+<script>
+// Minimal Soft Star Animation for About Section
+const canvasAbout = document.getElementById("aboutStars");
+const ctxAbout = canvasAbout.getContext("2d");
+canvasAbout.width = window.innerWidth;
+canvasAbout.height = window.innerHeight;
+
+const aboutStars = [];
+const aboutStarCount = 60;
+
+for (let i = 0; i < aboutStarCount; i++) {
+  aboutStars.push({
+    x: Math.random() * canvasAbout.width,
+    y: Math.random() * canvasAbout.height,
+    r: Math.random() * 1.5 + 0.5,
+    dy: Math.random() * 0.3 + 0.1,
+    opacity: Math.random() * 0.4 + 0.2
+  });
+}
+
+function animateAboutStars() {
+  ctxAbout.clearRect(0, 0, canvasAbout.width, canvasAbout.height);
+  aboutStars.forEach(star => {
+    ctxAbout.beginPath();
+    ctxAbout.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctxAbout.fillStyle = `rgba(255,255,255,${star.opacity})`;
+    ctxAbout.fill();
+    star.y += star.dy;
+    if (star.y > canvasAbout.height) {
+      star.y = 0;
+      star.x = Math.random() * canvasAbout.width;
+    }
+  });
+  requestAnimationFrame(animateAboutStars);
+}
+
+animateAboutStars();
+
+window.addEventListener('resize', () => {
+  canvasAbout.width = window.innerWidth;
+  canvasAbout.height = window.innerHeight;
+});
+</script>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="skills-section">
+  <h2 class="skills-title">My <span>Skills</span></h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card glow-orange">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+      <p>HTML5</p>
+    </div>
+
+    <div class="skill-card glow-blue">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+      <p>CSS3</p>
+    </div>
+
+    <div class="skill-card glow-yellow">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+      <p>JavaScript (ES6+)</p>
+    </div>
+
+    <div class="skill-card glow-pink">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+      <p>Git & GitHub</p>
+    </div>
+
+    <div class="skill-card glow-cyan">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+      <p>React.js (Basic)</p>
+    </div>
+
+    <div class="skill-card glow-violet">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
+      <p>C++</p>
+    </div>
+
+    <div class="skill-card glow-gold">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+      <p>Python</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* SECTION */
+.skills-section {
+  padding: 130px 20px;
+  background: radial-gradient(circle at top, #020617, #000000);
+  text-align: center;
+}
+
+/* TITLE */
+.skills-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 80px;
+}
+.skills-title span {
+  color: #22d3ee;
+}
+
+/* GRID */
+.skills-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 34px;
+}
+
+/* CARD */
+.skill-card {
+  height: 190px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.45s ease;
+  cursor: pointer;
+}
+
+/* ICON */
+.skill-card img {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 14px;
+}
+
+/* TEXT */
+.skill-card p {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* HOVER */
+.skill-card:hover {
+  transform: translateY(-14px) scale(1.06);
+}
+
+/* GLOW COLORS */
+.glow-orange:hover { box-shadow: 0 0 40px #f97316; }
+.glow-blue:hover { box-shadow: 0 0 40px #3b82f6; }
+.glow-yellow:hover { box-shadow: 0 0 40px #facc15; }
+.glow-pink:hover { box-shadow: 0 0 40px #ec4899; }
+.glow-cyan:hover { box-shadow: 0 0 40px #22d3ee; }
+.glow-violet:hover { box-shadow: 0 0 40px #a855f7; }
+.glow-gold:hover { box-shadow: 0 0 40px #fbbf24; }
+
+/* SCROLL REVEAL */
+.skill-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+/* Webflow-style scroll reveal */
+const skillCards = document.querySelectorAll(".skill-card");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.25 });
+
+skillCards.forEach(card => observer.observe(card));
+</script>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work Experience | Apple Gadgets</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body{
+      margin:0;
+      font-family: 'Segoe UI', sans-serif;
+      background:#000;
+      color:#fff;
+    }
+
+    /* SECTION */
+    .apple-work-section{
+      padding:140px 20px;
+      background: radial-gradient(circle at top, #0b0b0b, #000000);
+    }
+
+    .apple-container{
+      max-width:1100px;
+      margin:auto;
+    }
+
+    /* TITLE */
+    .apple-title{
+      text-align:center;
+      font-size:3rem;
+      font-weight:800;
+      margin-bottom:90px;
+    }
+    .apple-title span{
+      color:#ff7a00;
+    }
+
+    /* CARD */
+    .apple-card{
+      display:grid;
+      grid-template-columns:1fr 1.4fr;
+      gap:60px;
+      padding:50px;
+      border-radius:28px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,122,0,0.3);
+      box-shadow:0 0 60px rgba(255,122,0,0.15);
+      transition:.5s ease;
+    }
+    .apple-card:hover{
+      transform:scale(1.03);
+      box-shadow:0 0 90px rgba(255,122,0,0.35);
+    }
+
+    /* IMAGE */
+    .apple-image{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .apple-image img{
+  width:260px;
+  height:260px;
+  object-fit:cover;
+  border-radius:20px; /* square with smooth corners */
+  border:4px solid #ff7a00;
+  box-shadow:0 0 50px rgba(255,122,0,0.6);
+}
+
+
+    /* CONTENT */
+    .apple-content h3{
+      font-size:2rem;
+      color:#ff7a00;
+      margin-bottom:10px;
+    }
+
+    .company-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#fff;
+      text-decoration:none;
+      font-size:1.1rem;
+      margin-bottom:12px;
+      transition:.3s;
+    }
+    .company-link i{
+      color:#ff7a00;
+      font-size:1.4rem;
+    }
+    .company-link:hover{
+      color:#ff7a00;
+    }
+
+    .date{
+      color:#9ca3af;
+      font-style:italic;
+      margin-bottom:18px;
+    }
+
+    .apple-content ul{
+      list-style:disc;
+      padding-left:20px;
+      color:#e5e7eb;
+    }
+    .apple-content ul li{
+      margin-bottom:10px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .apple-card{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .apple-content ul{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
 <body>
-    
+
+<!-- WORK EXPERIENCE -->
+<section class="apple-work-section">
+  <div class="apple-container">
+
+    <h2 class="apple-title">
+      Work Experience <span>Apple Gadgets</span>
+    </h2>
+
+    <div class="apple-card">
+
+      <!-- IMAGE -->
+      <div class="apple-image">
+        <!-- এখানে তোমার image path বসাও -->
+        <img src="WhatsApp Image 2026-02-11 at 05.20.56.jpeg" alt="Nazmul Haque Noyon">
+      </div>
+
+      <!-- CONTENT -->
+      <div class="apple-content">
+        <h3>Campus Ambassador</h3>
+
+        <a href="https://www.applegadgetsbd.com/" target="_blank" class="company-link">
+          <i class="fa-brands fa-apple"></i>
+          Apple Gadgets BD | Dhaka
+        </a>
+
+        <p class="date">14 June 2023 – 15 December 2023</p>
+
+        <ul>
+          <li>Represented Apple Gadgets brand within university community</li>
+          <li>Promoted smart gadgets and exclusive student offers</li>
+          <li>Assisted customers and improved brand engagement</li>
+          <li>Developed communication, leadership, and teamwork skills</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
+
+<!-- EDUCATION SECTION -->
+<section id="education" class="py-24 bg-gray-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16 text-blue-400 animate-pulse">Education</h2>
+
+    <div class="space-y-10">
+
+      <!-- Education 1: BSc CSE -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-blue-400/50 border-2 border-transparent hover:border-blue-400 flex items-center gap-6">
+        <img src="aiub.jpeg" alt="AIUB Logo" class="w-24 h-24 rounded-full border-2 border-blue-400">
+        <div>
+          <h3 class="text-2xl font-bold text-blue-400">BSc in Computer Science & Engineering</h3>
+          <p class="text-gray-300 font-medium">American International University-Bangladesh (AIUB) | Dhaka</p>
+          <p class="text-gray-400 italic mb-2">19/09/2022 – Present</p>
+        </div>
+      </div>
+
+      <!-- Education 2: Programming Hero -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-sky-400/50 border-2 border-transparent hover:border-sky-400 flex items-center gap-6">
+        <img src="ph 026-02-11 at 06.33.24.jpeg" alt="Programming Hero Logo" class="w-24 h-24 rounded-full border-2 border-sky-400">
+        <div>
+          <h3 class="text-2xl font-bold text-sky-400">Programming Hero Web Development Bootcamp</h3>
+          <p class="text-gray-300 font-medium">Programming Hero | Online</p>
+          <p class="text-gray-400 italic mb-2">2024</p>
+          <p class="text-gray-400 text-sm">Project-based web development bootcamp covering modern technologies like JavaScript, React, backend frameworks, and portfolio projects.</p>
+        </div>
+      </div>
+
+      <!-- Education 3: HSC -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-yellow-400/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
+        <img src="uhsc.jpeg" alt="Uttara High School Logo" class="w-24 h-24 rounded-full border-2 border-yellow-400">
+        <div>
+          <h3 class="text-2xl font-bold text-yellow-400">Higher Secondary Certificate (HSC)</h3>
+          <p class="text-gray-300 font-medium">Uttara High School & College</p>
+          <p class="text-gray-400 italic mb-2">2019 – 2021</p>
+        </div>
+      </div>
+
+      <!-- Education 4: SSC -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-yellow-400/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
+        <img src="uhsc.jpeg" alt="Uttara High School Logo" class="w-24 h-24 rounded-full border-2 border-yellow-400">
+        <div>
+          <h3 class="text-2xl font-bold text-yellow-400">Secondary School Certificate (SSC)</h3>
+          <p class="text-gray-300 font-medium">Uttara High School & College</p>
+          <p class="text-gray-400 italic mb-2">2017 – 2019</p>
+        </div>
+      </div>
+
+      <!-- Education 5: Diploma -->
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-red-400/50 border-2 border-transparent hover:border-red-400 flex items-center gap-6">
+        <img src="gov.jpeg" alt="Youth Training Academy Logo" class="w-24 h-24 rounded-full border-2 border-red-400">
+        <div>
+          <h3 class="text-2xl font-bold text-red-400">Advance Diploma in Computer Office & Graphics</h3>
+          <p class="text-gray-300 font-medium">Youth Training Academy</p>
+          <p class="text-gray-400 italic mb-2">2019</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 bg-black/20">
+  <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">Projects</h2>
+  
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 px-6">
+    <!-- Project 1 -->
+    <div class="bg-gray-900/60 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
+      <img src="logo.jpeg" alt="Chirkut Feriwala Project" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold text-blue-300 mb-3">Chirkut Feriwala</h3>
+        <p class="text-gray-300 mb-4">
+          A fun and interactive note-taking web app for organizing daily tasks and spontaneous ideas. Fully responsive and user-friendly.
+        </p>
+        <a href="https://noyon710.github.io/Chirkut_Feriwala/" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+          View Project
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="bg-gray-900/60 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
+      <img src="https://noyon710.github.io/TechWave-Website/assets/thumbnail.png" alt="TechWave Website Project" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold text-blue-300 mb-3">TechWave Website</h3>
+        <p class="text-gray-300 mb-4">
+          A modern, responsive website showcasing tech solutions, services, and portfolio. Smooth animations and mobile-friendly design.
+        </p>
+        <a href="https://noyon710.github.io/TechWave-Website/" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+          View Project
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 bg-black/20">
+  <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">Projects</h2>
+  <p class="text-center text-gray-300">Coming soon… 🚀</p>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="py-24 text-center">
+  <h2 class="text-4xl font-bold mb-6 text-blue-400">Resume</h2>
+  <a href="assets/resume/Nazmul_Haque_Noyon_Resume.pdf" download
+     class="px-10 py-4 rounded-full bg-blue-600 hover:bg-blue-700 transition">
+     Download Resume
+  </a>
+</section>
+
+<footer class="py-6 text-center text-gray-300">
+© 2026 Nazmul Haque Noyon 🇧🇩
+</footer>
+
 </body>
 </html>
