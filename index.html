@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+  <!-- EmailJS Script --!> 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 html{scroll-behavior:smooth}
 
 /* Skill Card */
@@ -191,7 +193,6 @@ btn.addEventListener("click", ()=>{
 });
 </script>
 
-
 <!-- HERO SECTION -->
 <section class="hero relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-16 pt-24 overflow-hidden text-white">
 
@@ -243,7 +244,6 @@ btn.addEventListener("click", ()=>{
         <a href="https://www.linkedin.com/in/nazmul-haque-noyon-a44285279/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/Noyon710" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
         
-
       </div>
     </div>
   </div>
@@ -259,15 +259,14 @@ btn.addEventListener("click", ()=>{
 
       <div class="image-wrapper">
         <img src="no.jpeg" class="profile-img"/>
-        <div class="animated-border"></div>
       </div>
 
     </div>
   </div>
 
 </section>
-<style>
 
+<style>
 .hero {
   background: black;
   position: relative;
@@ -283,7 +282,6 @@ btn.addEventListener("click", ()=>{
   filter: blur(80px);
   animation: auroraMove 12s infinite alternate ease-in-out;
 }
-
 @keyframes auroraMove {
   0% { transform: translateX(-50px) translateY(-30px) scale(1);}
   100% { transform: translateX(50px) translateY(30px) scale(1.2);}
@@ -349,9 +347,40 @@ btn.addEventListener("click", ()=>{
   position:relative;
   border-radius:25px;
   overflow:hidden;
-  background:rgba(255,255,255,0.05);
+  background:rgba(0,0,0,0.05);
   box-shadow:0 25px 60px rgba(0,0,0,0.7),
              0 0 40px rgba(0,255,255,0.15);
+}
+
+/* Looping Neon Gradient Border */
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  padding: 4px; /* Border thickness */
+  background: conic-gradient(
+    #06b6d4,
+    #3b82f6,
+    #06b6d4,
+    #3b82f6,
+    #06b6d4
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  z-index: -1;
+  animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .profile-img {
@@ -363,32 +392,14 @@ btn.addEventListener("click", ()=>{
   transform:scale(1.07);
 }
 
-/* Border Glow */
-.animated-border {
-  position:absolute;
-  inset:-3px;
-  border-radius:28px;
-  background:linear-gradient(90deg,#06b6d4,#3b82f6,#06b6d4);
-  filter:blur(15px);
-  z-index:-1;
-  animation:borderMove 5s linear infinite;
-}
-
-@keyframes borderMove {
-  0%{ filter:hue-rotate(0deg);}
-  100%{ filter:hue-rotate(360deg);}
-}
-
 @keyframes floating {
   0%{ transform:translateY(0);}
   50%{ transform:translateY(-20px);}
   100%{ transform:translateY(0);}
 }
-
 </style>
 
 <script>
-
 const card = document.getElementById("tiltCard");
 
 card.addEventListener("mousemove",(e)=>{
@@ -440,11 +451,7 @@ window.addEventListener("resize",()=>{
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
 });
-
 </script>
-
-
-
 
 <!-- ABOUT SECTION -->
 <section id="about" class="relative flex justify-center px-6 md:px-16 py-24 bg-gray-800">
@@ -553,271 +560,149 @@ window.addEventListener('resize', () => {
   canvasAbout.width = window.innerWidth;
   canvasAbout.height = window.innerHeight;
 });
-</script>
-
-<!-- SKILLS SECTION -->
-<section id="skills" class="skills-section">
-
-  <!-- Particle Canvas -->
-  <canvas id="skillParticles"></canvas>
-
-  <h2 class="skills-title">My <span>Skills</span></h2>
-
-  <div class="skills-grid">
-
-    <!-- HTML -->
-    <div class="skill-card" data-color="#f97316">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
-      <p>HTML5</p>
-    </div>
-
-    <!-- CSS -->
-    <div class="skill-card" data-color="#3b82f6">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
-      <p>CSS3</p>
-    </div>
-
-    <!-- JS -->
-    <div class="skill-card" data-color="#facc15">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
-      <p>JavaScript</p>
-    </div>
-
-    <!-- React -->
-    <div class="skill-card" data-color="#06b6d4">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
-      <p>React</p>
-    </div>
-
-    <!-- C++ -->
-    <div class="skill-card" data-color="#8b5cf6">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
-      <p>C++</p>
-    </div>
-
-    <!-- Python -->
-    <div class="skill-card" data-color="#fbbf24">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-      <p>Python</p>
-    </div>
-
-    <!-- C# -->
-    <div class="skill-card" data-color="#512bd4">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg">
-      <p>C#</p>
-    </div>
-
-    <!-- GitHub -->
-    <div class="skill-card" data-color="#ffffff">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="filter: invert(1);">
-      <p>GitHub</p>
-    </div>
-
-    <!-- Figma -->
-    <div class="skill-card" data-color="#0acf83">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg">
-      <p>Figma</p>
-    </div>
-
-    <!-- Notion -->
-    <div class="skill-card" data-color="#999999">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png">
-      <p>Notion</p>
-    </div>
-
-  </div>
-</section>
-
-<style>
-
-/* SECTION */
-.skills-section{
-  position:relative;
-  padding:140px 20px;
-  background:radial-gradient(circle at top,#030712,#000);
-  overflow:hidden;
-  text-align:center;
-}
-
-/* PARTICLES */
-#skillParticles{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-}
-
-/* TITLE */
-.skills-title{
-  font-size:2.8rem;
-  font-weight:800;
-  color:white;
-  margin-bottom:70px;
-  position:relative;
-  z-index:2;
-}
-.skills-title span{
-  background:linear-gradient(90deg,#22d3ee,#3b82f6);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* GRID */
-.skills-grid{
-  position:relative;
-  z-index:2;
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:30px;
-  perspective:1000px;
-}
-
-/* CARD */
-.skill-card{
-  height:190px;
-  border-radius:22px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  transition:0.4s ease;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-
-/* GLASS MOUSE LIGHT */
-.skill-card::before{
-  content:"";
-  position:absolute;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle at var(--x) var(--y),
-    rgba(255,255,255,0.25),transparent 40%);
-  opacity:0;
-  transition:0.3s;
-}
-.skill-card:hover::before{
-  opacity:1;
-}
-
-/* ICON */
-.skill-card img{
-  width:55px;
-  margin-bottom:15px;
-  transition:0.4s;
-}
-.skill-card p{
-  color:white;
-  font-weight:600;
-}
-
-/* HOVER EFFECT + Dynamic Glow */
-.skill-card:hover{
-  box-shadow:0 0 35px var(--glow);
-}
-.skill-card:hover img{
-  transform:scale(1.15) rotate(6deg);
-}
-
-/* FLOATING */
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-  100%{transform:translateY(0);}
-}
-.skill-card{
-  animation:float 6s ease-in-out infinite;
-}
-
-</style>
-
-<script>
-
-/* ===== MOUSE FOLLOW + 3D TILT ===== */
-document.querySelectorAll(".skill-card").forEach(card=>{
-
-  const color=card.getAttribute("data-color");
-  card.style.setProperty("--glow",color);
-
-  card.addEventListener("mousemove",(e)=>{
-    const rect=card.getBoundingClientRect();
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-
-    card.style.setProperty("--x",x+"px");
-    card.style.setProperty("--y",y+"px");
-
-    const rotateX=-(y-rect.height/2)/15;
-    const rotateY=(x-rect.width/2)/15;
-
-    card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-  });
-
-  card.addEventListener("mouseleave",()=>{
-    card.style.transform="rotateX(0) rotateY(0)";
-  });
-
-});
-
-/* ===== PARTICLES ===== */
-const canvas=document.getElementById("skillParticles");
-const ctx=canvas.getContext("2d");
-
-function resizeCanvas(){
-  canvas.width=canvas.offsetWidth;
-  canvas.height=canvas.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener("resize",resizeCanvas);
-
-const particles=[];
-for(let i=0;i<70;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    d:Math.random()*0.6
-  });
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(255,255,255,0.6)";
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.y+=p.d;
-    if(p.y>canvas.height){
-      p.y=0;
-      p.x=Math.random()*canvas.width;
-    }
-  });
-  requestAnimationFrame(animate);
-}
-animate();
 
 </script>
-
-
-
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Work Experience | Apple Gadgets</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script src="https://cdn.tailwindcss.com"></script>
+
+<title>Skills Section</title>
+
+<style>
+/* Scroll Animation */
+.fade-up{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all 0.8s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+
+</head>
+<body class="bg-black text-white">
+
+<section class="relative py-28 px-6 bg-gradient-to-b from-gray-950 to-black overflow-hidden">
+
+  <!-- Title -->
+  <h2 class="text-4xl font-extrabold text-center mb-20">
+    My <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Skills</span>
+  </h2>
+
+  <!-- Grid -->
+  <div class="max-w-6xl mx-auto grid gap-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+
+    <!-- HTML -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-orange-500/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">HTML5</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Semantic structure & modern layouts.
+      </p>
+    </div>
+
+    <!-- CSS -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-blue-500/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">CSS3</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Responsive UI, Flexbox & Grid.
+      </p>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-yellow-400/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">JavaScript</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Dynamic interaction & DOM control.
+      </p>
+    </div>
+
+    <!-- React -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-cyan-400/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">React</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Component based frontend apps.
+      </p>
+    </div>
+
+    <!-- GitHub (centered next line) -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer md:col-start-2">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-gray-400/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 invert transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">GitHub</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Version control & collaboration.
+      </p>
+    </div>
+
+    <!-- Node -->
+    <div class="skill fade-up group relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 text-center transition duration-500 hover:scale-105 cursor-pointer">
+      <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-green-500/20"></div>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+           class="w-10 mx-auto mb-3 relative z-10 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+      <h3 class="font-semibold text-sm relative z-10">Node.js</h3>
+      <p class="text-gray-400 text-xs mt-1 relative z-10">
+        Backend APIs & server-side apps.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+/* Scroll Reveal Animation */
+const faders = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{ threshold:0.2 });
+
+faders.forEach(el=>{
+  observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work Experience</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- AOS Library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <style>
     body{
@@ -825,111 +710,160 @@ animate();
       font-family: 'Segoe UI', sans-serif;
       background:#000;
       color:#fff;
+      position:relative;
     }
 
-    /* SECTION */
-    .apple-work-section{
-      padding:140px 20px;
-      background: radial-gradient(circle at top, #0b0b0b, #000000);
+    /* Animated gradient title */
+    .animated-title{
+      font-size:3rem;
+      font-weight:900;
+      text-align:center;
+      margin-bottom:80px;
+      background: linear-gradient(90deg,#00f5ff,#8a2be2,#ff00ff);
+      background-size:300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientAnimation 6s ease infinite;
     }
 
-    .apple-container{
+    @keyframes gradientAnimation{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* Work Section */
+    .work-section{
+      background:#000;
+      padding:100px 20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Cards Grid */
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:40px;
       max-width:1100px;
       margin:auto;
+      position:relative;
+      z-index:2; /* above center spark */
     }
 
-    /* TITLE */
-    .apple-title{
-      text-align:center;
-      font-size:3rem;
-      font-weight:800;
-      margin-bottom:90px;
-    }
-    .apple-title span{
-      color:#ff7a00;
-    }
-
-    /* CARD */
-    .apple-card{
-      display:grid;
-      grid-template-columns:1fr 1.4fr;
-      gap:60px;
-      padding:50px;
-      border-radius:28px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,122,0,0.3);
-      box-shadow:0 0 60px rgba(255,122,0,0.15);
-      transition:.5s ease;
-    }
-    .apple-card:hover{
-      transform:scale(1.03);
-      box-shadow:0 0 90px rgba(255,122,0,0.35);
-    }
-
-    /* IMAGE */
-    .apple-image{
+    /* Card */
+    .card{
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 40px rgba(0,255,255,0.2);
+      transition: all 0.5s ease;
       display:flex;
-      align-items:center;
-      justify-content:center;
+      flex-direction: column;
+      text-align:center;
+      padding:20px;
     }
-    .apple-image img{
-  width:260px;
-  height:260px;
-  object-fit:cover;
-  border-radius:20px; /* square with smooth corners */
-  border:4px solid #ff7a00;
-  box-shadow:0 0 50px rgba(255,122,0,0.6);
-}
 
+    .card:hover{
+      transform: scale(1.05) rotateX(5deg);
+      box-shadow:0 0 60px rgba(0,255,255,0.5),0 0 100px rgba(138,43,226,0.3);
+    }
 
-    /* CONTENT */
-    .apple-content h3{
-      font-size:2rem;
-      color:#ff7a00;
+    /* Card Image */
+    .card img{
+      width:200px;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px; /* square images */
+      border:3px solid;
+      margin:auto;
+      margin-bottom:20px;
+      transition: all 0.5s ease;
+    }
+
+    /* Card Content */
+    .card h3{
+      font-size:1.8rem;
       margin-bottom:10px;
     }
 
     .company-link{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      color:#fff;
+      gap:8px;
+      font-weight:500;
+      color:#00f5ff;
       text-decoration:none;
-      font-size:1.1rem;
-      margin-bottom:12px;
-      transition:.3s;
+      margin-bottom:10px;
+      transition:0.3s;
     }
     .company-link i{
-      color:#ff7a00;
-      font-size:1.4rem;
+      font-size:1.2rem;
     }
     .company-link:hover{
-      color:#ff7a00;
+      color:#8a2be2;
     }
 
     .date{
       color:#9ca3af;
       font-style:italic;
-      margin-bottom:18px;
+      margin-bottom:12px;
     }
 
-    .apple-content ul{
+    ul{
       list-style:disc;
+      text-align:left;
       padding-left:20px;
       color:#e5e7eb;
     }
-    .apple-content ul li{
-      margin-bottom:10px;
+    ul li{
+      margin-bottom:8px;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .apple-card{
+    /* COMPANY COLORS */
+    .apple img{
+      border-color:#ff7a00;
+      box-shadow:0 0 40px #ff7a00;
+    }
+    .apple h3,.apple .company-link{
+      color:#ff7a00;
+    }
+    .ph img{
+      border-color:#9b59b6;
+      box-shadow:0 0 40px #9b59b6;
+    }
+    .ph h3,.ph .company-link{
+      color:#9b59b6;
+    }
+
+    /* CENTER SPARK / THUNDER BETWEEN CARDS */
+    .center-spark{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      width:4px;
+      height:200px;
+      background: linear-gradient(to bottom, #00f5ff, #8a2be2, #ff00ff);
+      animation: sparkMove 1s infinite alternate;
+      filter: drop-shadow(0 0 10px #00f5ff) drop-shadow(0 0 20px #8a2be2);
+      border-radius:2px;
+      z-index:1;
+    }
+
+    @keyframes sparkMove{
+      0%{transform: translate(-50%,-50%) scaleY(0.7);}
+      50%{transform: translate(-50%,-50%) scaleY(1.2);}
+      100%{transform: translate(-50%,-50%) scaleY(0.7);}
+    }
+
+    @media(max-width:768px){
+      .cards-grid{
         grid-template-columns:1fr;
-        text-align:center;
       }
-      .apple-content ul{
-        text-align:left;
+      .center-spark{
+        display:none; /* hide spark on small screens */
       }
     }
   </style>
@@ -937,60 +871,75 @@ animate();
 
 <body>
 
-<!-- WORK EXPERIENCE -->
- 
+<section class="work-section">
+  <!-- Animated Title -->
+  <h2 class="animated-title">Work Experience</h2>
 
-<section class="apple-work-section">
-  <div class="apple-container">
+  <!-- Center Spark -->
+  <div class="center-spark"></div>
 
-    <h2 class="apple-title">
-      Work Experience <span>Apple Gadgets</span>
-    </h2>
-
-    <div class="apple-card">
-
-      <!-- IMAGE -->
-      <div class="apple-image">
-        
-        <img src="WhatsApp Image 2026-02-11 at 05.20.56.jpeg" alt="Nazmul Haque Noyon">
-      </div>
-
-      <!-- CONTENT -->
-      <div class="apple-content">
-        <h3>Campus Ambassador</h3>
-
-        <a href="https://www.applegadgetsbd.com/" target="_blank" class="company-link">
-          <i class="fa-brands fa-apple"></i>
-          Apple Gadgets BD | Dhaka
-        </a>
-
-        <p class="date">14 June 2023 – 15 December 2023</p>
-
-        <ul>
-          <li>Represented Apple Gadgets brand within university community</li>
-          <li>Promoted smart gadgets and exclusive student offers</li>
-          <li>Assisted customers and improved brand engagement</li>
-          <li>Developed communication, leadership, and teamwork skills</li>
-        </ul>
-      </div>
-
+  <!-- Cards Grid -->
+  <div class="cards-grid">
+    <!-- Programming Hero -->
+    <div class="card ph" data-aos="fade-right" data-aos-duration="1000">
+      <img src="pogramming h.jpeg" alt="Programming Hero Logo">
+      <h3>Campus Hero / Campus Ambassador</h3>
+      <a href="https://web.programming-hero.com/home" target="_blank" class="company-link">
+        <i class="fa-solid fa-graduation-cap"></i> Programming Hero | Dhaka
+      </a>
+      <p class="date">March 2026 – Present</p>
+      <ul>
+        <li>Represent Programming Hero at campus</li>
+        <li>Organize seminars and events</li>
+        <li>Engage with students & coordinate with PH team</li>
+        <li>Enhance leadership & networking skills</li>
+      </ul>
     </div>
 
+    <!-- Apple Gadgets -->
+    <div class="card apple" data-aos="fade-left" data-aos-duration="1000">
+      <img src="WhatsApp Image 2026-02-11 at 05.20.56.jpeg" alt="Apple Gadgets Logo">
+      <h3>Campus Ambassador</h3>
+      <a href="https://www.applegadgetsbd.com/" target="_blank" class="company-link">
+        <i class="fa-brands fa-apple"></i> Apple Gadgets BD | Dhaka
+      </a>
+      <p class="date">14 June 2023 – 15 December 2023</p>
+      <ul>
+        <li>Represented Apple Gadgets brand within university community</li>
+        <li>Promoted smart gadgets and exclusive student offers</li>
+        <li>Assisted customers and improved brand engagement</li>
+        <li>Developed communication, leadership, and teamwork skills</li>
+      </ul>
+    </div>
   </div>
 </section>
+
+<script>
+  AOS.init({
+    once: true,
+    easing: 'ease-in-out',
+    duration: 1000
+  });
+</script>
 
 </body>
 </html>
 
+<!-- Include AOS CSS & JS in <head> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
 <!-- EDUCATION SECTION -->
 <section id="education" class="py-24 bg-gray-800">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-16 text-blue-400 animate-pulse">Education</h2>
+    <h2 class="text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
+      Education
+    </h2>
 
     <div class="space-y-10">
 
       <!-- Education 1: BSc CSE -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-blue-400/50 border-2 border-transparent hover:border-blue-400 flex items-center gap-6">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200" class="bg-gray-900 p-8 rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105 hover:rotate-1 hover:shadow-blue-500/50 border-2 border-transparent hover:border-blue-400 flex items-center gap-6">
         <img src="aiub.jpeg" alt="AIUB Logo" class="w-24 h-24 rounded-full border-2 border-blue-400">
         <div>
           <h3 class="text-2xl font-bold text-blue-400">BSc in Computer Science & Engineering</h3>
@@ -1000,7 +949,7 @@ animate();
       </div>
 
       <!-- Education 2: Programming Hero -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-sky-400/50 border-2 border-transparent hover:border-sky-400 flex items-center gap-6">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200" class="bg-gray-900 p-8 rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105 hover:-rotate-1 hover:shadow-sky-500/50 border-2 border-transparent hover:border-sky-400 flex items-center gap-6">
         <img src="ph 026-02-11 at 06.33.24.jpeg" alt="Programming Hero Logo" class="w-24 h-24 rounded-full border-2 border-sky-400">
         <div>
           <h3 class="text-2xl font-bold text-sky-400">Programming Hero Web Development Bootcamp</h3>
@@ -1011,7 +960,7 @@ animate();
       </div>
 
       <!-- Education 3: HSC -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-yellow-400/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200" class="bg-gray-900 p-8 rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105 hover:rotate-1 hover:shadow-yellow-500/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
         <img src="uhsc.jpeg" alt="Uttara High School Logo" class="w-24 h-24 rounded-full border-2 border-yellow-400">
         <div>
           <h3 class="text-2xl font-bold text-yellow-400">Higher Secondary Certificate (HSC)</h3>
@@ -1021,7 +970,7 @@ animate();
       </div>
 
       <!-- Education 4: SSC -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-yellow-400/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200" class="bg-gray-900 p-8 rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105 hover:-rotate-1 hover:shadow-yellow-500/50 border-2 border-transparent hover:border-yellow-400 flex items-center gap-6">
         <img src="uhsc.jpeg" alt="Uttara High School Logo" class="w-24 h-24 rounded-full border-2 border-yellow-400">
         <div>
           <h3 class="text-2xl font-bold text-yellow-400">Secondary School Certificate (SSC)</h3>
@@ -1031,7 +980,7 @@ animate();
       </div>
 
       <!-- Education 5: Diploma -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-red-400/50 border-2 border-transparent hover:border-red-400 flex items-center gap-6">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="200" class="bg-gray-900 p-8 rounded-2xl shadow-2xl transform transition duration-500 hover:scale-105 hover:rotate-1 hover:shadow-red-500/50 border-2 border-transparent hover:border-red-400 flex items-center gap-6">
         <img src="gov.jpeg" alt="Youth Training Academy Logo" class="w-24 h-24 rounded-full border-2 border-red-400">
         <div>
           <h3 class="text-2xl font-bold text-red-400">Advance Diploma in Computer Office & Graphics</h3>
@@ -1044,240 +993,356 @@ animate();
   </div>
 </section>
 
+<!-- Initialize AOS -->
+<script>
+  AOS.init({
+    once: true, // Animate only once when scrolling down
+    easing: 'ease-in-out',
+    duration: 1000
+  });
+</script>
 
 
-<!-- PROJECTS -->
-<section id="projects" class="py-24 bg-gray-600">
-  <h2 class="text-4xl font-bold text-center mb-12 text-black-400">Projects</h2>
-  
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 px-6">
+<!-- PROJECTS SECTION -->
+<section id="projects" class="py-24 bg-gray-900 relative overflow-hidden">
+  <!-- Section Title -->
+  <h2 class="text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
+    Projects
+  </h2>
+
+  <!-- Center Spark / Thunder Between Projects -->
+  <div class="center-spark"></div>
+
+  <!-- Projects Grid -->
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+    
     <!-- Project 1 -->
-    <div class="bg-gray-900/60 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="logo.jpeg" alt="Chirkut Feriwala Project" class="w-full h-48 object-cover">
+    <div class="project-card" data-aos="fade-right" data-aos-duration="1000">
+      <img src="logo.jpeg" alt="Chirkut Feriwala Project" class="w-full h-56 object-cover rounded-xl border-2 border-cyan-400 shadow-cyan-400/50">
       <div class="p-6">
-        <h3 class="text-2xl font-semibold text-blue-300 mb-3">Chirkut Feriwala</h3>
+        <h3 class="text-2xl font-semibold text-cyan-400 mb-3">Chirkut Feriwala</h3>
         <p class="text-gray-300 mb-4">
-          Notebook E-commers website. Fully responsive and user-friendly.
+          Notebook E-commerce website. Fully responsive, user-friendly, and sleek UI with modern design elements.
         </p>
-        <a href="https://noyon710.github.io/Chirkut_Feriwala/" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+        <a href="https://noyon710.github.io/Chirkut_Feriwala/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-purple-500 hover:to-cyan-500 text-white px-5 py-3 rounded-xl font-semibold transition transform hover:scale-105 shadow-lg hover:shadow-cyan-400/50">
           View Project
         </a>
       </div>
     </div>
 
     <!-- Project 2 -->
-    <div class="bg-gray-900/60 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="Screenshot 2026-02-11 at 7.36.01 AM.png" alt="TechWave Website Project" class="w-full h-48 object-cover">
+    <div class="project-card" data-aos="fade-left" data-aos-duration="1000">
+      <img src="Screenshot 2026-02-11 at 7.36.01 AM.png" alt="TechWave Website Project" class="w-full h-56 object-cover rounded-xl border-2 border-purple-400 shadow-purple-400/50">
       <div class="p-6">
-        <h3 class="text-2xl font-semibold text-blue-300 mb-3">TechWave Website</h3>
+        <h3 class="text-2xl font-semibold text-purple-400 mb-3">TechWave Website</h3>
         <p class="text-gray-300 mb-4">
-          A modern, responsive website showcasing tech solutions, services, and portfolio. Smooth animations and mobile-friendly design.
+          Modern, responsive website showcasing tech solutions, services, and portfolio. Smooth animations and mobile-friendly design.
         </p>
-        <a href="https://noyon710.github.io/TechWave-Website/" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+        <a href="https://noyon710.github.io/TechWave-Website/" target="_blank" class="inline-block bg-gradient-to-r from-purple-400 to-cyan-500 hover:from-cyan-500 hover:to-purple-500 text-white px-5 py-3 rounded-xl font-semibold transition transform hover:scale-105 shadow-lg hover:shadow-purple-400/50">
           View Project
         </a>
       </div>
     </div>
+
   </div>
 </section>
 
+<style>
+/* Project Cards Hover + Glow */
+.project-card{
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 0 40px rgba(0,255,255,0.2);
+  transition: all 0.5s ease;
+}
+.project-card:hover{
+  transform: scale(1.05) rotateX(5deg);
+  box-shadow:0 0 60px rgba(0,255,255,0.5),0 0 100px rgba(138,43,226,0.3);
+}
 
- <!-- EXTRACURRICULAR SECTION -->
-<section id="extra-curricular" class="py-24 bg-gray-800 text-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Extracurricular Activities</h2>
+/* Center Spark / Thunder Between Cards */
+.center-spark{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width:4px;
+  height:250px;
+  background: linear-gradient(to bottom, #00f5ff, #8a2be2, #ff00ff);
+  animation: sparkMove 1s infinite alternate;
+  filter: drop-shadow(0 0 10px #00f5ff) drop-shadow(0 0 20px #8a2be2);
+  border-radius:2px;
+  z-index:1;
+}
 
-    <div class="space-y-10">
+@keyframes sparkMove{
+  0%{transform: translate(-50%,-50%) scaleY(0.7);}
+  50%{transform: translate(-50%,-50%) scaleY(1.2);}
+  100%{transform: translate(-50%,-50%) scaleY(0.7);}
+}
 
-      <!-- Activity 1: Blood Donor -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-red-400/50 border-2 border-transparent hover:border-red-400 flex items-center gap-6">
-        <!-- Demo Logo Image -->
-        <img src="red pp Image 2026-02-11 at 08.47.14.jpeg" 
-             alt="Blood Donor Logo" class="w-24 h-24 rounded-full border-2 border-red-400 object-cover">
+@media(max-width:768px){
+  .center-spark{
+    display:none; /* hide spark on small screens */
+  }
+}
+</style>
 
+<script>
+  AOS.init({
+    once:true,
+    easing:'ease-in-out',
+    duration:1000
+  });
+</script>
+
+
+<!-- EXTRACURRICULAR ACTIVITIES -->
+<section class="relative py-24 overflow-hidden text-white">
+
+  <!-- Animated Background -->
+  <div class="absolute inset-0 animated-bg"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6">
+    
+    <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+      Extracurricular Activities
+    </h2>
+
+    <div class="space-y-12">
+
+      <!-- Blood Donor -->
+      <div class="activity-card from-left">
+        <img src="red pp Image 2026-02-11 at 08.47.14.jpeg"
+             class="w-24 h-24 rounded-full border-2 border-red-400 object-cover">
         <div>
           <h3 class="text-2xl font-bold text-red-400">Blood Donor</h3>
-          <p class="text-gray-300 font-medium">Red Crescent Blood Center | Mohammadpur, Dhaka</p>
-          <p class="text-gray-300 font-medium">Red Crescent Holy Family Medical College Hospital, Dhaka</p>
-          <p class="text-gray-400 italic mb-2">26/02/2024 – Current</p>
+          <p class="text-gray-300">Red Crescent Blood Center, Dhaka</p>
+          <p class="text-gray-400 italic">26/02/2024 – Current</p>
         </div>
       </div>
 
-      <!-- Activity 2: AIUB Lawn Tennis Team -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-green-400/50 border-2 border-transparent hover:border-green-400 flex items-center gap-6">
-        <!-- Demo Logo Image -->
-        <img src="sports App Image 2026-02-11 at 08.47.13.jpeg" 
-             alt="AIUB Lawn Tennis Logo" class="w-24 h-24 rounded-full border-2 border-green-400 object-cover">
-
+      <!-- Lawn Tennis -->
+      <div class="activity-card from-right">
+        <img src="sports App Image 2026-02-11 at 08.47.13.jpeg"
+             class="w-24 h-24 rounded-full border-2 border-green-400 object-cover">
         <div>
-          <h3 class="text-2xl font-bold text-green-400">Member, AIUB Lawn Tennis Team</h3>
-          <p class="text-gray-300 font-medium">Actively participate in inter-university tournaments, practice sessions, and team events.</p>
-          <p class="text-gray-400 italic mb-2">01/11/2024 – Current</p>
+          <h3 class="text-2xl font-bold text-green-400">AIUB Lawn Tennis Team</h3>
+          <p class="text-gray-300">Inter-university tournaments participation</p>
+          <p class="text-gray-400 italic">01/11/2024 – Current</p>
         </div>
       </div>
 
-      <!-- Activity 3: AIUB Astronomy & Space Science Club -->
-      <div class="bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-purple-400/50 border-2 border-transparent hover:border-purple-400 flex items-center gap-6">
-        <!-- Demo Logo Image -->
-        <img src="astro.jpeg" 
-             alt="AIUB Astronomy Club Logo" class="w-24 h-24 rounded-full border-2 border-purple-400 object-cover">
-
+      <!-- Astronomy Club -->
+      <div class="activity-card from-left">
+        <img src="astro.jpeg"
+             class="w-24 h-24 rounded-full border-2 border-purple-400 object-cover">
         <div>
-          <h3 class="text-2xl font-bold text-purple-400">Public Relation Team Member, AIUB Astronomy & Space Science Club</h3>
-          <p class="text-gray-300 font-medium">Participate in astronomy-related events, workshops, and observational activities.</p>
-          <p class="text-gray-400 italic mb-2">Date: Ongoing</p>
+          <h3 class="text-2xl font-bold text-purple-400">
+            Public Relation Team Member, AIUB Astronomy & Space Science Club
+          </h3>
+          <p class="text-gray-300">
+            Workshops, space observation & astronomy events participation.
+          </p>
+          <p class="text-gray-400 italic">Ongoing</p>
+        </div>
+      </div>
+
+      <!-- Duke of Edinburgh -->
+      <div class="activity-card from-right">
+        <img src="duek.jpeg"
+             class="w-24 h-24 rounded-full border-2 border-yellow-400 bg-white p-2 object-contain">
+        <div>
+          <h3 class="text-2xl font-bold text-yellow-400">
+            The Duke of Edinburgh's Award At AIUB – Bronze
+          </h3>
+          <p class="text-gray-300">
+            Skills Development, Social Service & Adventurous Journey.
+          </p>
+          <p class="text-gray-400 italic">Bronze Applicant</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
- 
-<!-- TRAVEL BLOG SECTION (MAIN PAGE) -->
-<section id="travel-vlog" class="py-24 bg-gray-700 text-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Travel Blog</h2>
 
-    <div class="grid md:grid-cols-2 gap-8">
+<style>
 
-      <!-- Travel 1: Kashmir (Visible) -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="kashmir.jpeg" alt="Kashmir" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Kashmir</h3>
-            <p class="text-gray-300 text-sm">
-               2024. Snowy valleys and mountains.  
-              Local food and culture explored.  
-              Scenic lakes and gardens visited.  
-              Memorable trekking and photography.
-            </p>
-          </div>
+/* ========================= */
+/* Animated Background */
+/* ========================= */
+
+.animated-bg{
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #000000);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* ========================= */
+/* Gradient Heading */
+/* ========================= */
+
+.gradient-text{
+  background:linear-gradient(90deg,#00ffff,#8a2be2,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:textShine 4s linear infinite;
+}
+
+@keyframes textShine{
+  0%{background-position:0%;}
+  100%{background-position:200%;}
+}
+
+/* ========================= */
+/* Card Style */
+/* ========================= */
+
+.activity-card{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:32px;
+  border-radius:20px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.4s ease;
+  will-change: transform, opacity;
+}
+
+.activity-card:hover{
+  transform:translateY(-8px) scale(1.02);
+}
+
+/* ========================= */
+/* Scroll Animation */
+/* ========================= */
+
+.from-left,
+.from-right{
+  opacity:0;
+  transition: all 0.9s cubic-bezier(.17,.67,.83,.67);
+}
+
+.from-left{
+  transform: translateX(-120px);
+}
+
+.from-right{
+  transform: translateX(120px);
+}
+
+.from-left.show,
+.from-right.show{
+  opacity:1;
+  transform: translateX(0);
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const elements = document.querySelectorAll(".from-left, .from-right");
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry, index)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>{
+          entry.target.classList.add("show");
+        }, index * 150);
+      }
+    });
+  },{
+    threshold: 0.25,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  elements.forEach(el=>{
+    observer.observe(el);
+  });
+
+});
+</script>
+
+
+<!-- TRAVEL BLOG SECTION -->
+<section id="travel-vlog" class="py-24 bg-gray-900 text-white">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-4xl font-bold mb-16 text-center text-purple-400">
+      Travel Blog
+    </h2>
+
+    <!-- Main Travels -->
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <!-- Card -->
+      <div class="travel-card">
+        <img src="kashmir.jpeg" class="travel-img">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Kashmir</h3>
+          <p class="text-gray-300 text-sm">
+            2024 December. Exploring the Beauty of Kashmir
+
+Kashmir, often called the “Paradise on Earth,” is a breathtaking valley tucked in the mountains of India. Its lush green landscapes, snow-capped peaks, and sparkling lakes make every moment unforgettable. The serene Dal Lake with its iconic shikaras offers a peaceful escape from the busy city life. Wander through the famous tea gardens and feel the calm embrace of nature. During winter, the entire valley transforms into a magical wonderland covered in snow. The local markets are full of vibrant handicrafts, Pashmina shawls, and traditional souvenirs. Every corner of Kashmir tells a story, blending nature’s beauty with rich culture. Visiting Kashmir isn’t just a trip—it’s an experience that stays in your heart forever.
+          </p>
         </div>
       </div>
 
-      <!-- Travel 2: Jama Masjid (Visible) -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="masjig.jpeg" alt="Jama Masjid" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Jama Masjid</h3>
-            <p class="text-gray-300 text-sm">
-              2024. Historical mosque visit.  
-              Observed Islamic architecture and art.  
-              Attended prayer session briefly.  
-              Enjoyed surrounding market atmosphere.
-            </p>
-          </div>
+      <div class="travel-card">
+        <img src="masjig.jpeg" class="travel-img">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Jama Masjid</h3>
+          <p class="text-gray-300 text-sm">
+           2024 December. Jama Masjid, one of India’s most iconic mosques, is a stunning example of Mughal architecture. Stepping inside, you can feel the history in every carved pillar and towering minaret. The courtyard is vast, welcoming thousands of worshippers while maintaining a peaceful aura. Its intricate carvings, red sandstone walls, and marble domes showcase the elegance of Islamic design. Visiting Jama Masjid is not just about sightseeing—it’s about experiencing centuries of culture, devotion, and architectural mastery.
+          </p>
         </div>
       </div>
 
     </div>
 
-    <!-- Hidden Additional Travels -->
-    <div id="moreTravels" class="grid md:grid-cols-2 gap-8 mt-8 hidden">
+    <!-- Hidden Travels -->
+    <div id="moreTravels" class="grid md:grid-cols-2 gap-10 mt-10 hidden">
 
-      <!-- Travel 3: New Delhi -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="d2.jpeg" alt="New Delhi" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">New Delhi</h3>
-            <p class="text-gray-300 text-sm">
-              2024. Explored historical monuments.  
-              Tasted street food and local cuisine.  
-              Visited India Gate and Red Fort.  
-              Enjoyed local markets and culture.
-            </p>
-          </div>
+      <div class="travel-card">
+        <img src="d2.jpeg" class="travel-img">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">New Delhi</h3>
+          <p class="text-gray-300 text-sm">
+            India Gate, Red Fort & street food adventure.
+          </p>
         </div>
       </div>
 
-      <!-- Travel 4: Sent Martin -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="sent.jpeg" alt="Sent Martin" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Sent Martin</h3>
-            <p class="text-gray-300 text-sm">
-              Beach vacation 2023. Clear blue waters.  
-              White sand relaxation and sunbathing.  
-              Explored local seafood restaurants.  
-              Enjoyed water sports and photography.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Travel 5: Rangamati -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="rangamati.jpeg" alt="Rangamati" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Rangamati</h3>
-            <p class="text-gray-300 text-sm">
-               2026. Hill tracts visit.  
-              Boat rides and local markets explored.  
-              Scenic viewpoints captured.  
-              Cultural villages visited.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Travel 6: Cox's Bazar -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="cox.jpeg" alt="Cox's Bazar" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Cox's Bazar</h3>
-            <p class="text-gray-300 text-sm">
-              Summer 2023. Long sandy beach visit.  
-              Sunset photography enjoyed.  
-              Local seafood and culture explored.  
-              Water sports tried.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Travel 7: Tanguar Haor -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="tangur.jpeg" alt="Tanguar Haor" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Tanguar Haor</h3>
-            <p class="text-gray-300 text-sm">
-              Winter 2025. Wetland exploration.  
-              Boat rides and bird watching.  
-              Local floating village visited.  
-              Photography of sunrise.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Travel 8: Marayang Tong -->
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex flex-col">
-        <img src="maray.jpeg" alt="Marayang Tong" class="w-full h-auto object-contain">
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Marayang Tong</h3>
-            <p class="text-gray-300 text-sm">
-              Spring 2021. Local village visit.  
-              Hills and rivers explored.  
-              Cultural events attended.  
-              Photography captured.
-            </p>
-          </div>
+      <div class="travel-card">
+        <img src="sent.jpeg" class="travel-img">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Sent Martin</h3>
+          <p class="text-gray-300 text-sm">
+            Blue water beach vacation & seafood exploration.
+          </p>
         </div>
       </div>
 
     </div>
 
     <!-- Show More Button -->
-    <div class="text-center mt-8">
-      <button id="showMoreBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">
+    <div class="text-center mt-12">
+      <button id="showMoreBtn" class="show-btn">
         Show More
       </button>
     </div>
@@ -1285,78 +1350,220 @@ animate();
   </div>
 </section>
 
-<script>
-  const showMoreBtn = document.getElementById('showMoreBtn');
-  const moreTravels = document.getElementById('moreTravels');
+<style>
 
-  showMoreBtn.addEventListener('click', () => {
-    moreTravels.classList.remove('hidden');
-    showMoreBtn.style.display = 'none'; // hide button after click
-  });
+/* Card Style */
+.travel-card{
+  background:#111827;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+/* Hover */
+.travel-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(0,255,255,0.3);
+}
+
+/* Image Full Show */
+.travel-img{
+  width:100%;
+  height:auto;        /* IMPORTANT FIX */
+  object-fit:contain; /* full image visible */
+  background:black;
+}
+
+/* Button Style */
+.show-btn{
+  background:linear-gradient(90deg,#00f5ff,#8a2be2);
+  padding:12px 30px;
+  border-radius:30px;
+  font-weight:bold;
+  transition:0.4s;
+}
+
+.show-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #00f5ff;
+}
+
+</style>
+
+<script>
+const showMoreBtn = document.getElementById('showMoreBtn');
+const moreTravels = document.getElementById('moreTravels');
+
+showMoreBtn.addEventListener('click', ()=>{
+  moreTravels.classList.remove('hidden');
+  showMoreBtn.style.display="none";
+});
 </script>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Footer Section with Icons</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* Gradient Background Animation */
+    .gradient-bg {
+      background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+      background-size:400% 400%;
+      animation: gradientMove 10s ease infinite;
+    }
 
+    @keyframes gradientMove {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
 
+    .input-box label {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      color: #aaa;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+    .input-box input:focus + label,
+    .input-box textarea:focus + label,
+    .input-box input:valid + label,
+    .input-box textarea:valid + label {
+      top: -10px;
+      font-size: 12px;
+      background: #1c1c1c;
+      padding: 0 5px;
+    }
 
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00f5ff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
 
+  <!-- CONTACT SECTION -->
+  <section class="gradient-bg py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16 text-blue-400 animate-pulse">Hire Me</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="backdrop-blur-lg bg-white/5 p-10 rounded-2xl">
+          <form id="contactForm" class="space-y-6">
+            <div class="input-box relative">
+              <input type="text" name="name" required class="w-full p-3 rounded-lg border border-gray-500 bg-transparent text-white outline-none">
+              <label>Name</label>
+            </div>
+            <div class="input-box relative">
+              <input type="email" name="email" required class="w-full p-3 rounded-lg border border-gray-500 bg-transparent text-white outline-none">
+              <label>Email</label>
+            </div>
+            <div class="input-box relative">
+              <textarea name="message" rows="5" required class="w-full p-3 rounded-lg border border-gray-500 bg-transparent text-white outline-none"></textarea>
+              <label>Message</label>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-cyan-400 to-purple-700 font-bold hover:scale-105 transition transform flex items-center justify-center gap-2">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <p id="form-status" class="text-center mt-2 text-green-400"></p>
+          </form>
+        </div>
 
-
-
-<!-- CONTACT / HIRE ME SECTION -->
-<section id="contact" class="py-24 bg-gray-900 text-white">
-  <div class="max-w-5xl mx-auto px-6">
-
-    <!-- Section Heading -->
-    <h2 class="text-4xl font-bold mb-12 text-blue-400 text-center animate-pulse">Hire Me</h2>
-
-    <div class="grid md:grid-cols-2 gap-12">
-
-      <!-- Contact Form -->
-      <form action="mailto:noyon49988@gmail.com" method="POST" class="bg-gray-800 p-8 rounded-2xl shadow-lg space-y-6">
-        <input type="text" name="name" placeholder="Your Name" required
-               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <input type="email" name="email" placeholder="Your Email" required
-               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <input type="text" name="subject" placeholder="Subject" required
-               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <textarea name="message" rows="5" placeholder="Your Message" required
-                  class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
-        <button type="submit" 
-                class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold shadow-lg hover:shadow-xl transition-colors duration-300">
-          Send Message
-        </button>
-      </form>
-
-      <!-- Contact Info -->
-      <div class="space-y-6 flex flex-col justify-center text-center md:text-left">
-        <p class="text-lg">📧 <a href="mailto:noyon49988@gmail.com" class="hover:text-blue-400 transition">noyon49988@gmail.com</a></p>
-        <p class="text-lg"> WhatsApp: <a href="https://wa.me/01646777803" target="_blank" class="hover:text-green-400 transition">01646777803</a></p>
-
-        <!-- Social Links -->
-        <div class="flex justify-center md:justify-start gap-6 mt-4">
-          <a href="https://www.linkedin.com/in/nazmul-haque-noyon-a44285279/" target="_blank" class="text-blue-600 hover:text-blue-400 transition text-2xl">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/Noyon710" target="_blank" class="text-gray-400 hover:text-white transition text-2xl">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.facebook.com/share/18Cs4SFtRU/" target="_blank" class="text-blue-500 hover:text-blue-400 transition text-2xl">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a href="https://www.instagram.com/nazmul_noyon71?igsh=aXc0dDQ3NTlsZmw1" target="_blank" class="text-pink-500 hover:text-pink-400 transition text-2xl">
-            <i class="fab fa-instagram"></i>
-          </a>
+        <!-- Social Media Links with Icons -->
+        <div class="flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-6">Connect with me</h3>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://www.facebook.com/share/1Renhkv9w4/" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-blue-600 hover:text-white transition">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/nazmul_noyon71?igsh=aXc0dDQ3NTlsZmw1" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-pink-500 hover:text-white transition">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/nazmul-haque-noyon-a44285279/" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-blue-700 hover:text-white transition">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://github.com/Noyon710" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-gray-700 hover:text-white transition">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://wa.me/8801646777804" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-green-500 hover:text-white transition">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:noyon49988@gmail.com" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full border border-white hover:bg-red-500 hover:text-white transition">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="py-6 text-center text-gray-400 bg-gray-900 border-t border-gray-700">
-  © 2026 Nazmul Haque Noyon 🇧🇩. All Rights Reserved.
-</footer>
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 py-16 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-gray-300">
+      <div>
+        <h4 class="font-bold mb-4 text-white">About Me</h4>
+        <p>Frontend Developer creating modern websites with Tailwind CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-white">Quick Links</h4>
+        <a href="#home" class="hover:text-cyan-400">Home</a>
+        <a href="#projects" class="hover:text-cyan-400">Projects</a>
+        <a href="#contact" class="hover:text-cyan-400">Contact</a>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-white">Contact Info</h4>
+        <p>Email: <a href="mailto:noyon49988@gmail.com" class="hover:text-red-500">noyon49988@gmail.com</a></p>
+        <p>Phone: <a href="https://wa.me/8801646777804" class="hover:text-green-500">+8801646777804</a></p>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-12 border-t border-gray-800 pt-6">
+      © 2026 Nazmul Haque Noyon. All rights reserved.
+    </div>
+  </footer>
 
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Back to Top Button -->
+  <button id="topBtn" onclick="topFunction()">↑</button>
+
+  <script>
+    // Form Submit Mock
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = "Message Sent!";
+      form.reset();
+    });
+
+    // Back to Top Button
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    }
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
